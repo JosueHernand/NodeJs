@@ -61,6 +61,11 @@ function writeToFile(fileName, data) {
     });
 }
 
-function init() {}
+function init() {
+    inquirer.Prompt(questions).then((answers) => {
+        const readmeContent = generateMarkdown(answers);
+        writeToFile('READEME.md', readmeContent);
+    });
+}
 
 init();
