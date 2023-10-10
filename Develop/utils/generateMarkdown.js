@@ -23,19 +23,16 @@ function renderLicenseLink(license) {
 }
 
 function renderLicenseSection(license) {
-  const badge = renderLicenseBadge(license);
-  const link = renderLicenseLink(license);
-
-  if (badge && link) {
-    return `
-## License
-
-This project is licensed under the [${license}](${link}) license. ${badge}
-`;
-  } else {
-    return '';
+  if (license === 'MIT') {
+    return 'This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).';
+  } else if (license === 'Apache 2.0') {
+    return 'This project is licensed under the [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0).';
+  } else if (license === 'GPLv3') {
+    return 'This project is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0).';
   }
+  return '';
 }
+
 
 function generateMarkdown(data) {
   return `

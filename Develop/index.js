@@ -24,10 +24,10 @@ const questions = [
         message: 'Provide instructions and examples for use:',
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
         message: 'Choose a license for your project:',
-        choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'No License'],
+        choices: ['MIT', 'Apache 2.0', 'GPLv3', 'No License'],
     },
     {
         type: 'input',
@@ -62,7 +62,7 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
-    inquirer.Prompt(questions).then((answers) => {
+    inquirer.prompt(questions).then((answers) => {
         const readmeContent = generateMarkdown(answers);
         writeToFile('READEME.md', readmeContent);
     });
